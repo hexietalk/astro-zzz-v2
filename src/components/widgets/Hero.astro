@@ -47,7 +47,7 @@ const {
         }
         <div class="max-w-3xl mx-auto">
           {subtitle && <p class="text-xl text-muted mb-6 dark:text-slate-300" set:html={subtitle} />}
-          {
+          <!-- {
             actions && (
               <div class="max-w-xs sm:max-w-md m-auto flex flex-nowrap flex-col sm:flex-row sm:justify-center gap-4">
                 {Array.isArray(actions) ? (
@@ -61,7 +61,7 @@ const {
                 )}
               </div>
             )
-          }
+          } -->
         </div>
         {content && <Fragment set:html={content} />}
       </div>
@@ -73,12 +73,12 @@ const {
                 <Fragment set:html={image} />
               ) : (
                 <Image
-                  class="mx-auto rounded-md w-full"
-                  widths={[400, 768, 1024, 2040]}
-                  sizes="(max-width: 767px) 400px, (max-width: 1023px) 768px, (max-width: 2039px) 1024px, 2040px"
+                  class="mx-auto rounded-md w-[409.6px] h-[230.4px]"
+                  widths={[160, 307, 410, 816]}
+                  sizes="(max-width: 767px) 160px, (max-width: 1023px) 307px, (max-width: 2039px) 410px, 816px"
                   loading="eager"
-                  width={1024}
-                  height={576}
+                  width={410}
+                  height={230}
                   {...image}
                 />
               )}

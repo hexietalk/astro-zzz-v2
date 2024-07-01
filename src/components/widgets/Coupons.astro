@@ -1,0 +1,36 @@
+---
+import { getLangFromUrl, useTranslations } from '~/i18n/utils';
+
+interface Coupon {
+  code: string;
+  discount: string;
+  expiry: string;
+}
+
+export interface Props {
+  title?: string;
+  coupons: Coupon[];
+}
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const { title = t('coupons.title'), coupons = [] } = Astro.props;
+---
+
+<section class="py-8 sm:py-16 lg:py-20">
+  <div class="mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+    <h2 class="mb-8 text-3xl font-bold text-center">{title}</h2>
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {coupons.map((coupon) => (
+        <div class="bg-white dark:bg-slate-900 shadow-lg rounded-lg overflow-hidden">
+          <div class="p-6">
+            <h3 class="text-xl font-semibold mb-2">{coupon.code}</h3>
+            <p class="text-gray-600 dark:text-gray-400 mb-4">{t('coupons.discount', { discount: coupon.discount })}</p>
+            <p class="text-sm text-gray-500 dark:text-gray-300">{t('coupons.expiry', { date: coupon.expiry })}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,33 @@
+---
+import { getRelativeLocaleUrl } from 'astro:i18n';
+---
+
+<div class="language-picker">
+  <button class="language-picker-btn hover:text-link dark:hover:text-white px-4 py-3 flex items-center">
+    Language
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 ml-0.5 rtl:ml-0 rtl:mr-0.5 hidden md:inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="6 9 12 15 18 9"></polyline>
+    </svg>
+  </button>
+  <ul class="language-picker-dropdown md:backdrop-blur-md dark:md:bg-dark rounded md:absolute pl-4 md:pl-0 md:hidden font-medium md:bg-white/90 md:min-w-[200px] drop-shadow-xl">
+    <li>
+      <a href={getRelativeLocaleUrl('en', '')} class="first:rounded-t last:rounded-b md:hover:bg-gray-100 hover:text-link dark:hover:text-white dark:hover:bg-gray-700 py-2 px-5 block whitespace-no-wrap">
+        English
+      </a>
+    </li>
+    <li>
+      <a href={getRelativeLocaleUrl('zh', '')} class="first:rounded-t last:rounded-b md:hover:bg-gray-100 hover:text-link dark:hover:text-white dark:hover:bg-gray-700 py-2 px-5 block whitespace-no-wrap">
+        中文
+      </a>
+    </li>
+  </ul>
+</div>
+
+<script>
+  const languagePickerBtn = document.querySelector('.language-picker-btn');
+  const languagePickerDropdown = document.querySelector('.language-picker-dropdown');
+
+  languagePickerBtn.addEventListener('click', () => {
+    languagePickerDropdown.classList.toggle('md:hidden');
+  });
+</script>

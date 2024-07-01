@@ -10,6 +10,8 @@ import partytown from '@astrojs/partytown';
 import icon from 'astro-icon';
 import compress from 'astro-compress';
 
+
+
 import astrowind from './vendor/integration';
 
 import {
@@ -83,6 +85,17 @@ export default defineConfig({
     remarkPlugins: [readingTimeRemarkPlugin],
     rehypePlugins: [responsiveTablesRehypePlugin, lazyImagesRehypePlugin],
   },
+
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en', 'zh'],
+    routing: {
+      prefixDefaultLocale: false
+    }
+  },
+
+
+
 
   vite: {
     resolve: {
